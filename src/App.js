@@ -11,7 +11,6 @@ class App extends React.Component {
 
   handleChange(event) {
     const target = event.target;
-
     const name = target.name;
     this.setState({
       [name]: target.value,
