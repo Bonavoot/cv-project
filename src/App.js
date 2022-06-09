@@ -13,6 +13,7 @@ class App extends React.Component {
       dateOfStudy: "",
       company: "",
       position: "",
+      mainTasks: "",
       timeAtJob: "",
       isSubmitted: false,
     };
@@ -35,11 +36,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="data-form">
         <form onSubmit={this.handleSubmit}>
+          <h1 className="info-title">Submit Info</h1>
           <h2>Personal Info</h2>
           <label>
-            <h4>Name:</h4>
+            <h4>Name</h4>
             <input
               name="fullName"
               placeholder="Bjarne Stroustrup"
@@ -50,7 +52,7 @@ class App extends React.Component {
           </label>
           <br />
           <label>
-            <h4>Email:</h4>
+            <h4>Email</h4>
             <input
               name="email"
               placeholder="user@mail.com"
@@ -61,7 +63,7 @@ class App extends React.Component {
           </label>
           <br />
           <label>
-            <h4>Phone Number:</h4>
+            <h4>Phone Number</h4>
             <input
               name="phone"
               type="text"
@@ -73,7 +75,7 @@ class App extends React.Component {
           <br />
           <h2>Education</h2>
           <label>
-            <h4>College Name:</h4>
+            <h4>College Name</h4>
             <input
               name="college"
               type="text"
@@ -84,7 +86,7 @@ class App extends React.Component {
           </label>
           <br />
           <label>
-            <h4>Major:</h4>
+            <h4>Major</h4>
             <input
               name="major"
               type="text"
@@ -95,7 +97,7 @@ class App extends React.Component {
           </label>
           <br />
           <label>
-            <h4>Date of Study:</h4>
+            <h4>Date of Study</h4>
             <input
               name="dateOfStudy"
               type="date"
@@ -106,7 +108,7 @@ class App extends React.Component {
           <br />
           <h2>Experience</h2>
           <label>
-            <h4>Company Name:</h4>
+            <h4>Company Name</h4>
             <input
               name="company"
               type="text"
@@ -117,7 +119,7 @@ class App extends React.Component {
           </label>
           <br />
           <label>
-            <h4>Position Title:</h4>
+            <h4>Position Title</h4>
             <input
               name="position"
               type="text"
@@ -128,12 +130,18 @@ class App extends React.Component {
           </label>
           <br />
           <label>
-            <h4>Describe Job:</h4>
-            <textarea name="mainTasks" value={this.state.mainTasks}></textarea>
+            <h4>Describe Job</h4>
+            <textarea
+              name="mainTasks"
+              rows={6}
+              cols={34}
+              value={this.state.mainTasks}
+              onChange={this.handleChange}
+            ></textarea>
           </label>
           <br />
           <label>
-            <h4>Time at Company:</h4>
+            <h4>Time at Company</h4>
             <input
               name="timeAtJob"
               type="position"
@@ -145,7 +153,23 @@ class App extends React.Component {
           <br />
           <input type="submit" value="Submit" />
         </form>
-        {this.state.isSubmitted && <RenderCV />}
+        <div className="cv-resume-render">
+          <h1 className="title">CV RESUME</h1>
+          {this.state.isSubmitted && (
+            <RenderCV
+              fullName={this.state.fullName}
+              email={this.state.email}
+              phone={this.state.phone}
+              college={this.state.college}
+              major={this.state.major}
+              dateOfStudy={this.state.dateOfStudy}
+              company={this.state.company}
+              position={this.state.position}
+              mainTasks={this.state.mainTasks}
+              timeAtJob={this.state.timeAtJob}
+            />
+          )}
+        </div>
       </div>
     );
   }
