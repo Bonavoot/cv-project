@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 
-class RenderCV extends React.Component {
+class RenderCV extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    return <div>Testeru!</div>;
+    return this.props;
   }
 }
 

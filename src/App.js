@@ -4,7 +4,18 @@ import RenderCV from "./components/RenderCV.js";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      fullName: "",
+      email: "",
+      phone: "",
+      college: "",
+      major: "",
+      dateOfStudy: "",
+      company: "",
+      position: "",
+      timeAtJob: "",
+      isSubmitted: false,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -17,7 +28,10 @@ class App extends React.Component {
     });
   }
 
-  handleSubmit(e) {}
+  handleSubmit(e) {
+    e.preventDefault();
+    this.setState({ isSubmitted: true });
+  }
 
   render() {
     return (
@@ -58,7 +72,6 @@ class App extends React.Component {
           </label>
           <br />
           <h2>Education</h2>
-
           <label>
             <h4>College Name:</h4>
             <input
@@ -95,8 +108,8 @@ class App extends React.Component {
           <label>
             <h4>Company Name:</h4>
             <input
-              name="text"
-              type="company"
+              name="company"
+              type="text"
               placeholder="FaceBook"
               value={this.state.company}
               onChange={this.handleChange}
@@ -106,8 +119,8 @@ class App extends React.Component {
           <label>
             <h4>Position Title:</h4>
             <input
-              name="text"
-              type="position"
+              name="position"
+              type="text"
               placeholder="Software Engineer"
               value={this.state.position}
               onChange={this.handleChange}
@@ -130,8 +143,9 @@ class App extends React.Component {
             ></input>
           </label>
           <br />
-          <button type="submit">Submit</button>
+          <input type="submit" value="Submit" />
         </form>
+        {this.state.isSubmitted && <RenderCV />}
       </div>
     );
   }
