@@ -38,7 +38,7 @@ class App extends React.Component {
     return (
       <div className="data-form">
         <form onSubmit={this.handleSubmit}>
-          <h1 className="info-title">Submit Info</h1>
+          <h1 className="info-title">INFO CONTENT</h1>
           <h2>Personal Info</h2>
           <label>
             <h4>Name</h4>
@@ -145,7 +145,7 @@ class App extends React.Component {
             <input
               name="timeAtJob"
               type="position"
-              placeholder="1 year 3 months"
+              placeholder="1 year"
               value={this.state.timeAtJob}
               onChange={this.handleChange}
             ></input>
