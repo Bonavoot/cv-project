@@ -16,6 +16,7 @@ const App = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
 
   // Form input change handlers
   const handleFullNameChange = (event) => {
@@ -57,6 +58,9 @@ const App = () => {
   // submit button, sets submitted state to true
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (item.fullName && item.email && item.phone) {
+      setValid(true);
+    }
     setSubmitted(true);
   };
 
@@ -180,7 +184,7 @@ const App = () => {
       </form>
       <div className="cv-resume-render">
         <h1 className="title">CV RESUME</h1>
-        {submitted && (
+        {submitted && valid ? (
           <RenderCV
             fullName={item.fullName}
             email={item.email}
@@ -193,7 +197,7 @@ const App = () => {
             mainTasks={item.mainTasks}
             timeAtJob={item.timeAtJob}
           />
-        )}
+        ) : null}
       </div>
     </div>
   );
